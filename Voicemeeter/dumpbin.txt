@@ -1,0 +1,53 @@
+﻿Microsoft (R) COFF/PE Dumper Version 14.00.23506.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file VoicemeeterRemote.dll
+
+File Type: DLL
+
+  Section contains the following exports for VoicemeeterRemote.dll
+
+    00000000 characteristics
+    5D0B1CF8 time date stamp Wed Jun 19 23:43:20 2019
+        0.00 version
+           1 ordinal base
+          26 number of functions
+          26 number of names
+
+    ordinal hint RVA      name
+
+          1    0 00005440 VBVMR_AudioCallbackRegister
+          2    1 00005730 VBVMR_AudioCallbackStart
+          3    2 000056F0 VBVMR_AudioCallbackStop
+          4    3 00005C40 VBVMR_AudioCallbackUnregister
+          5    4 000044E0 VBVMR_GetLevel
+          6    5 00004730 VBVMR_GetMidiMessage
+          7    6 00003190 VBVMR_GetParameterFloat
+          8    7 000044A0 VBVMR_GetParameterStringA
+          9    8 00004270 VBVMR_GetParameterStringW
+         10    9 00002F00 VBVMR_GetVoicemeeterType
+         11    A 00002F40 VBVMR_GetVoicemeeterVersion
+         12    B 00005330 VBVMR_Input_GetDeviceDescA
+         13    C 00005410 VBVMR_Input_GetDeviceDescW
+         14    D 00005320 VBVMR_Input_GetDeviceNumber
+         15    E 00003130 VBVMR_IsParametersDirty
+         16    F 00002DE0 VBVMR_Login
+         17   10 00002EA0 VBVMR_Logout
+         18   11 00005000 VBVMR_Output_GetDeviceDescA
+         19   12 000052F0 VBVMR_Output_GetDeviceDescW
+         20   13 00004EB0 VBVMR_Output_GetDeviceNumber
+         21   14 00002F80 VBVMR_RunVoicemeeter
+         22   15 000047B0 VBVMR_SetParameterFloat
+         23   16 000049D0 VBVMR_SetParameterStringA
+         24   17 00004880 VBVMR_SetParameterStringW
+         25   18 00004E50 VBVMR_SetParameters
+         26   19 00004E30 VBVMR_SetParametersW
+
+  Summary
+
+        8000 .data
+        2000 .rdata
+        2000 .reloc
+        1000 .rsrc
+       13000 .text
