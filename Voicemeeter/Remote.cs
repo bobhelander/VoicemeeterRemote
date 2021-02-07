@@ -106,6 +106,14 @@ namespace VoiceMeeter
         }
 
         /// <summary>
+        /// Return if the parameters have changed since the last time this method was called.
+        /// </summary>
+        public static int IsParametersDirty()
+        {
+            return RemoteWrapper.IsParametersDirty();
+        }
+
+        /// <summary>
         /// Eject Cassette 
         /// </summary>
         public static void Eject()

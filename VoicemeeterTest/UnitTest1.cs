@@ -54,20 +54,34 @@ namespace VoiceMeeterTest
         }
 
         [TestMethod]
-        [Ignore]
+        //[Ignore]
         public async Task TestMute()
         {
             using (var _ = await VoiceMeeter.Remote.Initialize(Voicemeeter.RunVoicemeeterParam.VoicemeeterPotato).ConfigureAwait(false))
             {
                 var parameter = "Strip[0].Mute";
 
-                VoiceMeeter.Remote.SetParameter(parameter, 1);
-                await Task.Delay(1000);
-                var mute = VoiceMeeter.Remote.GetParameter(parameter);
+                if (VoiceMeeter.Remote.IsParametersDirty() != 0)
+                {
+                    // Get the current setting
+                    var oldMuteSetting = VoiceMeeter.Remote.GetParameter(parameter);
 
-                VoiceMeeter.Remote.SetParameter(parameter, 0);
-                await Task.Delay(1000);
-                Assert.AreEqual(mute, 1);
+                    // Mute it
+                    VoiceMeeter.Remote.SetParameter(parameter, 1);
+                    await Task.Delay(1000);
+
+                    if (VoiceMeeter.Remote.IsParametersDirty() != 0)
+                    {
+                        // Get the test value
+                        var mute = VoiceMeeter.Remote.GetParameter(parameter);
+
+                        // Set it back
+                        VoiceMeeter.Remote.SetParameter(parameter, oldMuteSetting);
+                        await Task.Delay(1000);
+
+                        Assert.AreEqual(mute, 1);
+                    }
+                }
             }
         }
 

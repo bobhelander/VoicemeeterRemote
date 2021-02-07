@@ -10,8 +10,10 @@
     <PackageProjectUrl>https://github.com/bobhelander/VoicemeeterRemote</PackageProjectUrl>
     <RepositoryUrl>https://github.com/bobhelander/VoicemeeterRemote</RepositoryUrl>
     <PackageTags>voicemeeter</PackageTags>
-    <PackageReleaseNotes>1.0.0 Initial Release</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.1 Expose IsParameterDirty()
+1.0.0 Initial Release</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
