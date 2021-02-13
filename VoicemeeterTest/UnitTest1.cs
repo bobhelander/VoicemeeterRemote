@@ -161,5 +161,21 @@ namespace VoiceMeeterTest
                 Assert.AreNotEqual(results.Count, 0);
             }
         }
+
+        [TestMethod]
+        [Ignore]
+        public async Task TestParmetersSubscribe()
+        {
+            using (var _ = await VoiceMeeter.Remote.Initialize(Voicemeeter.RunVoicemeeterParam.VoicemeeterPotato).ConfigureAwait(false))
+            {
+                var results = new List<int>();
+                var parameters = new Voicemeeter.Parameters();
+                var subscription = parameters.Subscribe(x => results.Add(x));
+
+                // Change some settings in voicemeeter
+                await Task.Delay(10000);
+                Assert.IsTrue(results.Count > 1);
+            }
+        }
     }
 }

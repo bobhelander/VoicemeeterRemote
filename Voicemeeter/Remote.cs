@@ -110,7 +110,16 @@ namespace VoiceMeeter
         /// </summary>
         public static int IsParametersDirty()
         {
-            return RemoteWrapper.IsParametersDirty();
+            try
+            {
+                return RemoteWrapper.IsParametersDirty();
+            }
+            catch(Exception ex)
+            {
+                // TODO: Figure out the Memory Exception when calling the API
+                ;
+            }
+            return 0;
         }
 
         /// <summary>
