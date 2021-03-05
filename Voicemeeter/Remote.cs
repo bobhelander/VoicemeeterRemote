@@ -62,6 +62,16 @@ namespace VoiceMeeter
             TestResult(RemoteWrapper.SetParameter(parameter, value));
         }
 
+
+        /// <summary>
+        /// Set one or several parameters by a script
+        /// </summary>
+        /// <param name="parameters">One or more instructions separated by comma, semicolon or newline</param>
+        public static void SetParameters(string parameters)
+        {
+            TestResult(RemoteWrapper.SetParameters(parameters));
+        }
+
         #endregion
 
         #region Commands
@@ -190,15 +200,24 @@ namespace VoiceMeeter
             {
                 // Find current version from the registry
                 const string key = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+                const string key32 = @"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
                 const string uninstKey = "VB:Voicemeeter {17359A74-1236-5467}";
                 var voicemeeter = Registry.GetValue($"{key}\\{uninstKey}", "UninstallString", null);
+
+                if (voicemeeter == null && Environment.Is64BitProcess)
+                {
+                    // Fall back to 32-bits registry
+                    voicemeeter = Registry.GetValue($"{key32}\\{uninstKey}", "UninstallString", null);
+                }
+
                 if (voicemeeter == null)
                 {
                     throw new Exception("Voicemeeter not installed");
                 }
 
                 handle = Wrapper.LoadLibrary(
-                    System.IO.Path.Combine(System.IO.Path.GetDirectoryName(voicemeeter.ToString()), "VoicemeeterRemote.dll"));
+                    System.IO.Path.Combine(System.IO.Path.GetDirectoryName(voicemeeter.ToString()), 
+                        Environment.Is64BitProcess ? "VoicemeeterRemote64.dll" : "VoicemeeterRemote.dll"));
             }
 
             var startVoiceMeeter = voicemeeterType != RunVoicemeeterParam.None;

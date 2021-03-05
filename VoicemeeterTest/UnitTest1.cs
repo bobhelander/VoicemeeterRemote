@@ -177,5 +177,16 @@ namespace VoiceMeeterTest
                 Assert.IsTrue(results.Count > 1);
             }
         }
+
+
+        [TestMethod]
+        [Ignore]
+        public async Task TestSetParameters()
+        {
+            using (var _ = await VoiceMeeter.Remote.Initialize(Voicemeeter.RunVoicemeeterParam.VoicemeeterPotato).ConfigureAwait(false))
+            {
+                VoiceMeeter.Remote.SetParameters("Strip[3].A1 = 1; Strip[3].A2 = 0");
+            }
+        }
     }
 }
