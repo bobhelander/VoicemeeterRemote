@@ -124,7 +124,7 @@ namespace VoiceMeeter
             {
                 return RemoteWrapper.IsParametersDirty();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 // TODO: Figure out the Memory Exception when calling the API
                 ;
@@ -221,6 +221,8 @@ namespace VoiceMeeter
             }
 
             var startVoiceMeeter = voicemeeterType != RunVoicemeeterParam.None;
+
+            await Task.Delay(1000);
 
             if (await Login(voicemeeterType, startVoiceMeeter).ConfigureAwait(false))
             {

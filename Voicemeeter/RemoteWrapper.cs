@@ -144,7 +144,7 @@ namespace Voicemeeter
 
     internal static class RemoteWrapper64
     {
-        [DllImport("VoicemeeterRemote64.dll", EntryPoint = "VBVMR_Login", CallingConvention = CallingConvention.StdCall)]
+        [DllImport("VoicemeeterRemote64.dll", EntryPoint = "VBVMR_Login")]//, CallingConvention = CallingConvention.StdCall)]
         internal static extern int LoginVoicemeeter();
 
         [DllImport("VoicemeeterRemote64.dll", EntryPoint = "VBVMR_Logout")]

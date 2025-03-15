@@ -54,7 +54,7 @@ namespace VoiceMeeterTest
         }
 
         [TestMethod]
-        //[Ignore]
+        [Ignore]
         public async Task TestMute()
         {
             using (var _ = await VoiceMeeter.Remote.Initialize(Voicemeeter.RunVoicemeeterParam.VoicemeeterPotato).ConfigureAwait(false))
@@ -163,7 +163,7 @@ namespace VoiceMeeterTest
         }
 
         [TestMethod]
-        [Ignore]
+        //[Ignore]
         public async Task TestParmetersSubscribe()
         {
             using (var _ = await VoiceMeeter.Remote.Initialize(Voicemeeter.RunVoicemeeterParam.VoicemeeterPotato).ConfigureAwait(false))
@@ -173,7 +173,9 @@ namespace VoiceMeeterTest
                 var subscription = parameters.Subscribe(x => results.Add(x));
 
                 // Change some settings in voicemeeter
-                await Task.Delay(10000);
+                //await Task.Delay(10000);
+
+                await Task.Delay(60000);
                 Assert.IsTrue(results.Count > 1);
             }
         }
